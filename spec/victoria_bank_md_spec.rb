@@ -1,6 +1,6 @@
-require 		 './victoria_bank'
+require 		 		 './victoria_bank'
 require_relative 'spec_helper.rb'
-require 'open-uri'
+require 				 'open-uri'
 
 describe Victoria_bank_md do
 	let(:subject) { Victoria_bank_md.new }
