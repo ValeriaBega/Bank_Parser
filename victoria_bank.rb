@@ -85,7 +85,6 @@ class Victoria_bank_md
 		currency = accounts_html.at_css('span.currency').text
 		accounts_html.css('div')[3].content.empty? ? nature = 'Account' : nature ='Card Account'
 		account  = Accounts.new(name, currency, balance, nature)
-
 		@account_details << account
 	end
 
@@ -93,8 +92,7 @@ class Victoria_bank_md
 		description         = transactions_html.css('h1').text
 		date                = Date.parse(transactions_html.css('div.value')[0].text).strftime
 		amount              = transactions_html.at_css('span.amount').text
-		transaction_details = Transactions.new(date, description, amount)
-		
+		transaction_details = Transactions.new(date, description, amount)		
 		@transactions_details << transaction_details
 	end
 
