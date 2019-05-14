@@ -1,13 +1,15 @@
 require 'watir'
 require 'nokogiri'
-require 'pry'
 require 'json'
 require 'rubocop'
 require 'open-uri'
+require 'pry'
 require_relative 'transactions.rb'
 require_relative 'accounts.rb'
 
 class VictoriaBank  
+  URL = "https://web.vb24.md/wb/#login"
+
   def get_user_credentials
     puts "Enter your username"
     @username = gets.chomp
@@ -26,7 +28,7 @@ class VictoriaBank
     Watir::Wait.until do
       if @browser.div(class: "error", text: "Invalid username or password").present?
         puts "Inlavid username or password"
-        break
+        exit
       end
       @browser.div(class: "contracts").present?
     end
@@ -34,7 +36,7 @@ class VictoriaBank
 
   def init_session
     @browser = Watir::Browser.new
-    @browser.goto "https://web.vb24.md/wb/#login"
+    @browser.goto URL
     Watir::Wait.until{ @browser.input(class: 'username').present? }
   end
 
@@ -76,18 +78,19 @@ class VictoriaBank
 
   def parse_acc(accounts_html)
     name     = accounts_html.at_css('a.name').text
-    balance  = accounts_html.at_css('span.amount').text
+    balance  = accounts_html.at_css('span.amount').text.delete(",").to_f
     currency = accounts_html.at_css('span.currency').text
-    accounts_html.css('div')[3].content.empty? ? nature = 'Account' : nature ='Card Account'
+    nature   = accounts_html.css('div')[3].content.empty? ? 'Account' : 'Card Account'
     account  = Accounts.new(name, currency, balance, nature)
     @account_details << account
   end
 
   def parse_transaction(transactions_html)
-    description         = transactions_html.css('h1').text
+    description         = transactions_html.css('h1').text.squeeze(" ")
     date                = Date.parse(transactions_html.css('div.value')[0].text).strftime
-    amount              = transactions_html.at_css('span.amount').text
-    transaction_details = Transactions.new(date, description, amount)       
+    amount              = transactions_html.at_css('span.amount').text.delete(",").to_f
+    currencyt            = transactions_html.at_css('span.currency').text
+    transaction_details = Transactions.new(date, description, amount, currencyt)       
     @transactions_details << transaction_details
   end
 
@@ -128,11 +131,11 @@ class VictoriaBank
         'currency'     => account.currency,
         'nature'       => account.nature,
         'transactions' => account.transactions.map do |transaction|
-          next if transaction.nil?
           {
             'date'        => transaction.date,
             'description' => transaction.description,
-            'amount'      => transaction.amount
+            'amount'      => transaction.amount,
+            'currency'    => transaction.currencyt
           }
         end
       }
@@ -141,8 +144,7 @@ class VictoriaBank
   end
 
   def export_to_json
-    @file_name = 'banking_info.json'
-    File.open("#{@file_name}", 'w') do |file|
+    File.open("banking_info.json", 'w') do |file|
       file.write(JSON.pretty_generate(sort))
     end
   end

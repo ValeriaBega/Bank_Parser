@@ -1,49 +1,41 @@
 {
   "accounts": [
     {
-      "name": "MD15VI225911807271111111",
-      "balance": "11,111.11",
+      "name": "MD15VI225911807270932324",
+      "balance": 12764.7,
       "currency": "MDL",
       "nature": "Card Account",
       "transactions": [
         {
-          "date": "2019-03-06",
-          "description": "Retail www moldcell md Chisinau      MOLDOVA",
-          "amount": "260.00"
+          "date": "2019-05-06",
+          "description": "Retail www.moldcell.md CHISINAU MOLDOVA",
+          "amount": 290.0,
+          "currency": "MDL"
         },
         {
-          "date": "2019-03-05",
-          "description": "Retail FITNESS CLASS CHISINAU MOLDOVA",
-          "amount": "3,317.40"
-        },
-        {
-          "date": "2019-03-04",
-          "description": "Transfer to VISA Card 402811******6169",
-          "amount": "200.00"
-        },
-        {
-          "date": "2019-03-02",
-          "description": "ATM ATM272 MICB \"Bodoni\" Chisinau (mun MOLDOVA",
-          "amount": "2,000.00"
+          "date": "2019-05-04",
+          "description": "Retail LUKOIL SAC-99 G CHISINAU MOLDOVA",
+          "amount": 100.0,
+          "currency": "MDL"
         }
       ]
     },
     {
-      "name": "22331700000000MDL",
-      "balance": "0.00",
+      "name": "22331700000855MDL",
+      "balance": 0.0,
       "currency": "MDL",
       "nature": "Account",
       "transactions": [
-        null
+
       ]
     },
     {
-      "name": "22331700000000EUR",
-      "balance": "0.00",
+      "name": "22331700000390EUR",
+      "balance": 0.0,
       "currency": "EUR",
       "nature": "Account",
       "transactions": [
-        null
+
       ]
     }
   ]

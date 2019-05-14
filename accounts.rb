@@ -7,6 +7,6 @@ class Accounts
     @currency     = currency
     @balance      = balance
     @nature       = nature
-    @transactions = [transactions]
+    @transactions = []
   end
 end
