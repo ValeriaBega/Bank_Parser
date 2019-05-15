@@ -23,7 +23,7 @@ describe VictoriaBank do
       transaction = subject.parse_transaction(html)
       expect(transaction.date).to eq        "2019-05-02"
       expect(transaction.description).to eq "Retail LUKOIL PECO-13 CHISINAU MOLDOVA"
-      expect(transaction.amount).to eq      946.03
+      expect(transaction.amount).to eq      -946.03
     end
   end
 end

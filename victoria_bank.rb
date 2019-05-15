@@ -86,10 +86,13 @@ class VictoriaBank
   end
 
   def parse_transaction(transactions_html)
+    sign                = transactions_html.at_css('span.amount-sign')
+    unsigned_amount     = transactions_html.at_css('span.amount').text.delete(",").to_f
+
     description         = transactions_html.css('h1').text.squeeze(" ")
     date                = Date.parse(transactions_html.css('div.value')[0].text).strftime
-    amount              = transactions_html.at_css('span.amount').text.delete(",").to_f
-    currencyt            = transactions_html.at_css('span.currency').text
+    amount              = sign.nil? ? unsigned_amount * -1 : unsigned_amount
+    currencyt           = transactions_html.at_css('span.currency').text
     transaction_details = Transactions.new(date, description, amount, currencyt)       
     @transactions_details << transaction_details
   end

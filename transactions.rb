@@ -5,6 +5,6 @@ class Transactions
     @date        = date
     @description = description
     @amount      = amount
-    @currencyt    = currencyt
+    @currencyt   = currencyt
   end 
 end

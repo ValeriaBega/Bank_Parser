@@ -2,20 +2,20 @@
   "accounts": [
     {
       "name": "MD15VI225911807270932324",
-      "balance": 12764.7,
+      "balance": 11111.11,
       "currency": "MDL",
       "nature": "Card Account",
       "transactions": [
         {
-          "date": "2019-05-06",
-          "description": "Retail www.moldcell.md CHISINAU MOLDOVA",
-          "amount": 290.0,
+          "date": "2019-05-09",
+          "description": "Retail PATRIA MULTIPLEX CHISINAU MOLDOVA",
+          "amount": -405.0,
           "currency": "MDL"
         },
         {
-          "date": "2019-05-04",
-          "description": "Retail LUKOIL SAC-99 G CHISINAU MOLDOVA",
-          "amount": 100.0,
+          "date": "2019-05-08",
+          "description": "Retail SUPERMARKET NR 1 CHISINAU MOLDOVA",
+          "amount": -327.61,
           "currency": "MDL"
         }
       ]
