@@ -1,10 +1,10 @@
 class Transactions
-  attr_accessor :date, :description, :amount, :currencyt
+  attr_accessor :date, :description, :amount, :currency
 
-  def initialize(date, description, amount, currencyt)
+  def initialize(date, description, amount, currency)
     @date        = date
     @description = description
     @amount      = amount
-    @currencyt   = currencyt
+    @currency    = currency
   end 
 end

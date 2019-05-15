@@ -3,7 +3,6 @@ require 'nokogiri'
 require 'json'
 require 'rubocop'
 require 'open-uri'
-require 'pry'
 require_relative 'transactions.rb'
 require_relative 'accounts.rb'
 
@@ -92,8 +91,8 @@ class VictoriaBank
     description         = transactions_html.css('h1').text.squeeze(" ")
     date                = Date.parse(transactions_html.css('div.value')[0].text).strftime
     amount              = sign.nil? ? unsigned_amount * -1 : unsigned_amount
-    currencyt           = transactions_html.at_css('span.currency').text
-    transaction_details = Transactions.new(date, description, amount, currencyt)       
+    currency            = transactions_html.at_css('span.currency').text
+    transaction_details = Transactions.new(date, description, amount, currency)       
     @transactions_details << transaction_details
   end
 
@@ -138,7 +137,7 @@ class VictoriaBank
             'date'        => transaction.date,
             'description' => transaction.description,
             'amount'      => transaction.amount,
-            'currency'    => transaction.currencyt
+            'currency'    => transaction.currency
           }
         end
       }
