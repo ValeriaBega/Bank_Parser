@@ -1,0 +1,42 @@
+{
+  "accounts": [
+    {
+      "name": "MD15VI225911807270932324",
+      "balance": 11111.11,
+      "currency": "MDL",
+      "nature": "Card Account",
+      "transactions": [
+        {
+          "date": "2019-05-09",
+          "description": "Retail PATRIA MULTIPLEX CHISINAU MOLDOVA",
+          "amount": -405.0,
+          "currency": "MDL"
+        },
+        {
+          "date": "2019-05-08",
+          "description": "Retail SUPERMARKET NR 1 CHISINAU MOLDOVA",
+          "amount": -327.61,
+          "currency": "MDL"
+        }
+      ]
+    },
+    {
+      "name": "22331700000855MDL",
+      "balance": 0.0,
+      "currency": "MDL",
+      "nature": "Account",
+      "transactions": [
+
+      ]
+    },
+    {
+      "name": "22331700000390EUR",
+      "balance": 0.0,
+      "currency": "EUR",
+      "nature": "Account",
+      "transactions": [
+
+      ]
+    }
+  ]
+}
